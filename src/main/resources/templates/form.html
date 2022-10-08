@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+  <link rel="stylesheet" th:href="@{/index.css}"/>
+  <link rel="stylesheet" th:href="@{/form-stylesheet.css}"/>
+  <title>Form</title>
+
+</head>
+<body>
+
+  <nav class="nav">
+    <ul class="menu-navigation">
+      <li class="item-navigation active"><a class="active" th:href="@{/}">Form</a></li>
+      <li class="item-navigation"><a th:href="@{/phonebook}">PhoneBook</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <h1 class="main-title">PhoneBook Management</h1>
+
+    <form class="form" method="post" th:action="@{/submitForm}" th:object="${person}">
+
+      <div class="form-field">
+        <label class="form-label" for="lastName">Name</label>
+        <p style="color: red" th:errors="*{lastName}"></p>
+        <input class="form-input" id="lastName" placeholder="Enter your name" th:field="*{lastName}" type="text">
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="firstName">First name</label>
+        <p style="color: red" th:errors="*{firstName}"></p>
+        <input class="form-input" id="firstName" placeholder="Enter your first name" th:field="*{firstName}" type="text">
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="phoneNumber">Phone number</label>
+        <p style="color: red" th:errors="*{phoneNumber}"></p>
+        <input class="form-input" id="phoneNumber" placeholder="06XXXXXXXX" th:field="*{phoneNumber}" type="text">
+      </div>
+
+      <input th:field="*{id}" type="hidden">
+      <input class="btn" type="submit" value="Add this person">
+
+    </form>
+
+  </div>
+
+</body>
+</html>

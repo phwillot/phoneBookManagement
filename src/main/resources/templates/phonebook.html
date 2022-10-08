@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <link rel="stylesheet" th:href="@{/index.css}"/>
+    <link rel="stylesheet" th:href="@{/phonebook-stylesheet.css}"/>
+    <title>PhoneBook</title>
+
+  </head>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <ul class="menu-navigation">
+      <li class="item-navigation"><a th:href="@{/}">Form</a></li>
+      <li class="item-navigation active"><a class="active" th:href="@{/phonebook}">PhoneBook</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <table class="table">
+      <tr class="table-headers">
+        <th>Lastname</th>
+        <th>Firstname</th>
+        <th>Phone number</th>
+      </tr>
+      <tr th:each="person: ${phonebook}" class="table-data">
+        <td th:text="${person.lastName}"></td>
+        <td th:text="${person.firstName}"></td>
+        <td th:text="${person.phoneNumber}"></td>
+        <td>
+          <a class="btn" role="button" th:href="@{/(id = ${person.id})}">Update</a>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+
+</body>
+</html>
